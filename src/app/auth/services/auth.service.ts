@@ -52,7 +52,7 @@ export class AuthService {
     const url = `${this.baseUrl}/auth/check-token`;
 
     if (!token) {
-      this._authStatus.set(AuthStatus.unauthenticated);
+      this.logout();
       return of(false);
     }
 
@@ -65,5 +65,11 @@ export class AuthService {
         return of(false);
       })
     );
+  }
+
+  logout() {
+    this._currentUser.set(null);
+    this._authStatus.set(AuthStatus.unauthenticated);
+    localStorage.removeItem('token');
   }
 }

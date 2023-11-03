@@ -11,7 +11,7 @@ export class DashboardLayoutComponent {
 
   public user = computed(() => this.authService.currentUser());
 
-  // get user(): User | null {
-  //   return this.authService.currentUser();
-  // }
+  onLogout() {
+    this.authService.logout();
+  }
 }
