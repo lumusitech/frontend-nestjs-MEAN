@@ -23,7 +23,9 @@ export class AuthService {
   public currentUser = computed(() => this._currentUser());
   public authStatus = computed(() => this._authStatus());
 
-  // constructor() {}
+  constructor() {
+    this.checkAuthStatus().subscribe();
+  }
 
   private setAuthentication(token: string, user: User): boolean {
     this._currentUser.set(user);

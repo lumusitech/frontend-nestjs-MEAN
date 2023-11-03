@@ -11,6 +11,10 @@ export const isAuthenticatedGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
+  if (authService.authStatus() === AuthStatus.checking) {
+    return false;
+  }
+
   // If i want to know what path the user is trying to access
   // and then redirect to that path
 
